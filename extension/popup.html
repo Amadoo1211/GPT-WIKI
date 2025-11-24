@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT-Wiki PRO</title>
+  <link rel="stylesheet" href="styles/popup.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="popup">
+    <header>
+      <h1>GPT-Wiki <span>PRO</span></h1>
+      <p class="subtitle">Premium research assistant</p>
+    </header>
+    <div class="auth-actions">
+      <button id="magic-link" class="primary">Connect with Email</button>
+      <div id="google-btn" class="secondary">Sign in with Google</div>
+    </div>
+    <div class="status">
+      <p id="credits">Credits: --</p>
+      <p id="plan">Plan: Free</p>
+    </div>
+    <div class="links">
+      <button id="open-sidebar" class="ghost">Open Sidebar</button>
+      <button id="buy-credits" class="primary ghost">Buy Credits</button>
+      <button id="logout" class="ghost danger">Logout</button>
+    </div>
+    <div id="message" class="message"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

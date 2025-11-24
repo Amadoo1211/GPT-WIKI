@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "GPT-Wiki PRO",
+  "description": "Premium GPT-Wiki assistant with deep research, billing, and sidebar chat.",
+  "version": "1.0.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GPT-Wiki PRO"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["http://localhost:3001/*", "https://api.openai.com/*"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://accounts.google.com; object-src 'self'"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  }
+}

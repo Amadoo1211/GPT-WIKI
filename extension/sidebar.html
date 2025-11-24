@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT-Wiki Sidebar</title>
+  <link rel="stylesheet" href="styles/sidebar.css">
+</head>
+<body>
+  <div class="sidebar">
+    <header>
+      <div>
+        <h2>GPT-Wiki <span>PRO</span></h2>
+        <p id="credit-display">Credits: --</p>
+      </div>
+      <button id="refresh" title="Refresh credits">⟳</button>
+    </header>
+    <main id="chat-feed"></main>
+    <div class="actions">
+      <button data-action="deep-research">Deep Research</button>
+      <button data-action="summarize">Summarize Page</button>
+      <button data-action="ask">Ask GPT-Wiki</button>
+    </div>
+    <form id="chat-form">
+      <input id="chat-input" placeholder="Ask anything..." autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+    <div id="loading" class="loading hidden">Thinking...</div>
+  </div>
+  <script src="sidebar.js"></script>
+</body>
+</html>
