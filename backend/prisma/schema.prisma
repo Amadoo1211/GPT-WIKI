@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PaymentType {
+  CREDIT
+  SUBSCRIPTION
+}
+
+enum PaymentStatus {
+  REQUIRES_ACTION
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id                String            @id @default(uuid())
+  email             String            @unique
+  googleId          String?           @unique
+  credits           Int               @default(0)
+  subscriptionStatus String           @default("none")
+  stripeCustomerId  String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  magicTokens       MagicLinkToken[]
+  payments          Payment[]
+}
+
+model MagicLinkToken {
+  id         String   @id @default(uuid())
+  tokenHash  String   @unique
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  expiresAt  DateTime
+  consumed   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model Payment {
+  id               String         @id @default(uuid())
+  stripeSessionId  String         @unique
+  stripeCustomerId String?
+  user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           String
+  type             PaymentType
+  creditsAdded     Int?
+  subscriptionId   String?
+  status           PaymentStatus  @default(REQUIRES_ACTION)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
